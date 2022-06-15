@@ -1,4 +1,4 @@
-﻿//Saifullin Bulat 220 P Chess_3 task: 15.04.2022
+﻿//Sharipov Kamil 220 P Chess_3 task: 15.04.2022
 using System;
 namespace Chess_3
 {
