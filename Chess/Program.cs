@@ -6,6 +6,7 @@ namespace Chess_3
     {
         public static void Main()
         {
+            // А что это такое??
             Knight knight = new Knight(1,1);
             knight.Print();
             knight.Move("B3");
