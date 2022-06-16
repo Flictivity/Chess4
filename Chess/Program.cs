@@ -10,19 +10,19 @@ namespace Chess_4
         {
             string chess = Console.ReadLine();
             string startCords = Console.ReadLine();
-            string MoveCords = Console.ReadLine();
+            string moveCords = Console.ReadLine();   
 
             try
             {
-                var piece = PieceFabric.Make(new PieceData 
-                                             { 
-                                                Name = chess, 
-                                                Data = new Dictionary<string,string>
+                var piece = PieceFabric.Make(new PieceData
+                {
+                    Name = chess,
+                    Data = new Dictionary<string, string>
                                                 {
                                                     { "Cords", $"{startCords}" }
                                                 }
-                                             });
-                piece.Move(MoveCords);
+                });
+                piece.Move(moveCords);
                 piece.Print();
             }
             catch (Exception e)
