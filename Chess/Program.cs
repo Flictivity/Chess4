@@ -1,5 +1,7 @@
 ﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
 using System;
+using System.Collections.Generic;
+
 namespace Chess_4
 {
     class Program
@@ -12,7 +14,14 @@ namespace Chess_4
 
             try
             {
-                var piece = PieceFabric.Make(chess, startCords);
+                var piece = PieceFabric.Make(new PieceData 
+                                             { 
+                                                Name = chess, 
+                                                Data = new Dictionary<string,string>
+                                                {
+                                                    { "Cords", $"{startCords}" }
+                                                }
+                                             });
                 piece.Move(MoveCords);
                 piece.Print();
             }
