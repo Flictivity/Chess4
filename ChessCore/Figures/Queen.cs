@@ -1,8 +1,8 @@
-﻿//Saifullin Bulat 220 P Chess_3 task: 15.04.2022
+﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
 using System;
-namespace Chess_3
+namespace Chess_4
 {
-    internal class Queen : Piece
+    class Queen : Piece
     {
         public Queen(string coords) : base(coords) { }
         public Queen(int x, int y) : base(x, y) { }

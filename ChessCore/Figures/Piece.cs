@@ -1,9 +1,9 @@
-﻿//Saifullin Bulat 220 P Chess_3 task: 15.04.2022
+﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
 using System;
 using System.Collections.Generic;
-namespace Chess_3
+namespace Chess_4
 {
-    class Piece
+    abstract public class Piece
     {
         protected int x { set; get; }
         protected int y { set; get; }
