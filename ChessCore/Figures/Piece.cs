@@ -1,12 +1,12 @@
 ﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
 using System;
 using System.Collections.Generic;
-namespace Chess_4
+namespace Chess4WPF
 {
     abstract public class Piece
     {
-        protected int x { set; get; }
-        protected int y { set; get; }
+        public int x { private set; get; }
+        public int y { private set; get; }
 
         private Dictionary<char, int> dict = new Dictionary<char, int>
         {

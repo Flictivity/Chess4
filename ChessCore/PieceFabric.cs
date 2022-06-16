@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chess_4
+namespace Chess4WPF
 {
     public class PieceData
     {
         public string Name;
-        public Dictionary<string, string> Data;
+        public Dictionary<string, int> Data;
 
         public override string ToString()
         {
@@ -22,28 +22,34 @@ namespace Chess_4
 
             switch (p.Name)
             {
+                case "Queen":
                 case "Q":
-                    piece = new Queen(p.Data["Cords"]);
+                    piece = new Queen(p.Data["X"], p.Data["Y"]);
                     break;
 
+                case "Pawn":
                 case "P":
-                    piece = new Pawn(p.Data["Cords"]);
+                    piece = new Pawn(p.Data["X"], p.Data["Y"]);
                     break;
 
+                case "Rook":
                 case "R":
-                    piece = new Rook(p.Data["Cords"]);
+                    piece = new Rook(p.Data["X"], p.Data["Y"]);
                     break;
 
+                case "Knight":
                 case "N":
-                    piece = new Knight(p.Data["Cords"]);
+                    piece = new Knight(p.Data["X"], p.Data["Y"]);
                     break;
 
+                case "King":
                 case "K":
-                    piece = new King(p.Data["Cords"]);
+                    piece = new King(p.Data["X"], p.Data["Y"]);
                     break;
 
+                case "Bishop":
                 case "B":
-                    piece = new Bishop(p.Data["Cords"]);
+                    piece = new Bishop(p.Data["X"], p.Data["Y"]);
                     break;
 
                 default: throw new Exception("Wrong piece name");

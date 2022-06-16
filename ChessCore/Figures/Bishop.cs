@@ -1,6 +1,6 @@
 ﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
 using System;
-namespace Chess_4
+namespace Chess4WPF
 {
     class Bishop : Piece
     {

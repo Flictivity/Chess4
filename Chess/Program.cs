@@ -2,27 +2,30 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chess_4
+namespace Chess4WPF
 {
     class Program
     {
         public static void Main()
         {
             string chess = Console.ReadLine();
-            string startCords = Console.ReadLine();
-            string moveCords = Console.ReadLine();   
+            int x = int.Parse(Console.ReadLine());
+            int y = int.Parse(Console.ReadLine());
+            int x1 = int.Parse(Console.ReadLine());
+            int y1 = int.Parse(Console.ReadLine());
 
             try
             {
                 var piece = PieceFabric.Make(new PieceData
                 {
                     Name = chess,
-                    Data = new Dictionary<string, string>
+                    Data = new Dictionary<string, int>
                                                 {
-                                                    { "Cords", $"{startCords}" }
+                                                    { "X",x },
+                                                    { "Y", y}
                                                 }
                 });
-                piece.Move(moveCords);
+                piece.Move(x1,y1);
                 piece.Print();
             }
             catch (Exception e)

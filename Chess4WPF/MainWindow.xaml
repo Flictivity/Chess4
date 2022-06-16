@@ -1,121 +1,131 @@
-﻿<Window x:Class="Chess4WPF.MainWindow"
+﻿<Window x:Name="ChessWindow" x:Class="Chess4WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess4WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="795" Width="1200">
-
+        Title="Chess Game" Height="795" Width="1200" Background="#FFFFDDAA" FontStyle="Normal" FontWeight="Normal">
+    <Window.Resources>
+        <Style x:Key="btn">
+            <Setter Property="Control.Width" Value="80"/>
+            <Setter Property="Control.Height" Value="80"/>
+            <Setter Property="Control.HorizontalAlignment" Value = "Center"/>
+            <Setter Property="Control.VerticalAlignment" Value = "Center"/>
+            <EventSetter Event="Button.Click" Handler="Btn_Click" />
+        </Style>
+        <Style x:Key="btnBlack" BasedOn="{StaticResource btn}">
+            <Setter Property="Control.Background" Value="Black" />
+            <Setter Property="Control.Foreground" Value="White" />
+        </Style>
+        <Style x:Key="btnWhite" BasedOn="{StaticResource btn}">
+            <Setter Property="Control.Background" Value="White" />
+            <Setter Property="Control.Foreground" Value="Black" />
+        </Style>
+    </Window.Resources>
     <Grid x:Name="Board">
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="Col0" Width="80"/>
-            <ColumnDefinition x:Name="Col1" Width="80"/>
-            <ColumnDefinition x:Name="Col2" Width="80"/>
-            <ColumnDefinition x:Name="Col3" Width="80"/>
-            <ColumnDefinition x:Name="Col4" Width="80"/>
-            <ColumnDefinition x:Name="Col5" Width="80"/>
-            <ColumnDefinition x:Name="Col6" Width="80"/>
-            <ColumnDefinition x:Name="Col7" Width="80"/>
-            <ColumnDefinition x:Name="Col8" Width="80"/>
-            <ColumnDefinition x:Name="Col9" Width="80"/>
-            <ColumnDefinition x:Name="Col10"/>
+            <ColumnDefinition x:Name="Col1" Width="*"/>
+            <ColumnDefinition x:Name="Col2" Width="*"/>
+            <ColumnDefinition x:Name="Col3" Width="*"/>
+            <ColumnDefinition x:Name="Col4" Width="*"/>
+            <ColumnDefinition x:Name="Col5" Width="*"/>
+            <ColumnDefinition x:Name="Col6" Width="*"/>
+            <ColumnDefinition x:Name="Col7" Width="*"/>
+            <ColumnDefinition x:Name="Col8" Width="*"/>
+            <ColumnDefinition x:Name="Col9" Width="*"/>
+            <ColumnDefinition x:Name="Col10" Width="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="80" x:Name="Row0"/>
-            <RowDefinition Height="80" x:Name="Row1"/>
-            <RowDefinition Height="80" x:Name="Row2"/>
-            <RowDefinition Height="80" x:Name="Row3"/>
-            <RowDefinition Height="80" x:Name="Row4"/>
-            <RowDefinition Height="80" x:Name="Row5"/>
-            <RowDefinition Height="80" x:Name="Row6"/>
-            <RowDefinition Height="80" x:Name="Row7"/>
-            <RowDefinition Height="80" x:Name="Row8"/>
-            <RowDefinition Height="80" x:Name="Row9"/>
-            <RowDefinition x:Name="Row10"/>
+            <RowDefinition Height="*" x:Name="Row1"/>
+            <RowDefinition Height="*" x:Name="Row2"/>
+            <RowDefinition Height="*" x:Name="Row3"/>
+            <RowDefinition Height="*" x:Name="Row4"/>
+            <RowDefinition Height="*" x:Name="Row5"/>
+            <RowDefinition Height="*" x:Name="Row6"/>
+            <RowDefinition Height="*" x:Name="Row7"/>
+            <RowDefinition Height="*" x:Name="Row8"/>
+            <RowDefinition Height="*" x:Name="Row9"/>
+            <RowDefinition Height ="80" x:Name="Row10"/>
         </Grid.RowDefinitions>
 
-        <Rectangle Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="1" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="1" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="1" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="1" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="1" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
+        <Button x:Name="R8C1" Grid.Row="8" Grid.Column="1" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R8C2" Grid.Row="8" Grid.Column="2" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R8C3" Grid.Row="8" Grid.Column="3" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R8C4" Grid.Row="8" Grid.Column="4" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R8C5" Grid.Row="8" Grid.Column="5" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R8C6" Grid.Row="8" Grid.Column="6" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R8C7" Grid.Row="8" Grid.Column="7" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R8C8" Grid.Row="8" Grid.Column="8" Style="{StaticResource btnWhite}"/>
 
-        <Rectangle Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="2" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="2" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="2" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="2" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
+        <Button x:Name="R7C1" Grid.Row="7" Grid.Column="1" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R7C2" Grid.Row="7" Grid.Column="2" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R7C3" Grid.Row="7" Grid.Column="3" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R7C4" Grid.Row="7" Grid.Column="4" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R7C5" Grid.Row="7" Grid.Column="5" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R7C6" Grid.Row="7" Grid.Column="6" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R7C7" Grid.Row="7" Grid.Column="7" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R7C8" Grid.Row="7" Grid.Column="8" Style="{StaticResource btnBlack}"/>
 
-        <Rectangle Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="3" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="3" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="3" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="3" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="3" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
+        <Button x:Name="R6C1" Grid.Row="6" Grid.Column="1" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R6C2" Grid.Row="6" Grid.Column="2" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R6C3" Grid.Row="6" Grid.Column="3" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R6C4" Grid.Row="6" Grid.Column="4" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R6C5" Grid.Row="6" Grid.Column="5" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R6C6" Grid.Row="6" Grid.Column="6" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R6C7" Grid.Row="6" Grid.Column="7" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R6C8" Grid.Row="6" Grid.Column="8" Style="{StaticResource btnWhite}"/>
 
-        <Rectangle Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="4" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="4" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="4" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="4" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="4" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
+        <Button x:Name="R5C1" Grid.Row="5" Grid.Column="1" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R5C2" Grid.Row="5" Grid.Column="2" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R5C3" Grid.Row="5" Grid.Column="3" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R5C4" Grid.Row="5" Grid.Column="4" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R5C5" Grid.Row="5" Grid.Column="5" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R5C6" Grid.Row="5" Grid.Column="6" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R5C7" Grid.Row="5" Grid.Column="7" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R5C8" Grid.Row="5" Grid.Column="8" Style="{StaticResource btnBlack}"/>
 
-        <Rectangle Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="5" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="5" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="5" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="5" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="5" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="5" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="5" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
+        <Button x:Name="R4C1" Grid.Row="4" Grid.Column="1" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R4C2" Grid.Row="4" Grid.Column="2" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R4C3" Grid.Row="4" Grid.Column="3" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R4C4" Grid.Row="4" Grid.Column="4" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R4C5" Grid.Row="4" Grid.Column="5" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R4C6" Grid.Row="4" Grid.Column="6" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R4C7" Grid.Row="4" Grid.Column="7" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R4C8" Grid.Row="4" Grid.Column="8" Style="{StaticResource btnWhite}"/>
 
-        <Rectangle Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="6" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="6" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="6" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="6" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="6" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="6" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
+        <Button x:Name="R3C1" Grid.Row="3" Grid.Column="1" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R3C2" Grid.Row="3" Grid.Column="2" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R3C3" Grid.Row="3" Grid.Column="3" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R3C4" Grid.Row="3" Grid.Column="4" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R3C5" Grid.Row="3" Grid.Column="5" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R3C6" Grid.Row="3" Grid.Column="6" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R3C7" Grid.Row="3" Grid.Column="7" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R3C8" Grid.Row="3" Grid.Column="8" Style="{StaticResource btnBlack}"/>
 
-        <Rectangle Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="7" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="7" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="7" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="7" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="7" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="7" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="7" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
+        <Button x:Name="R2C1" Grid.Row="2" Grid.Column="1" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R2C2" Grid.Row="2" Grid.Column="2" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R2C3" Grid.Row="2" Grid.Column="3" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R2C4" Grid.Row="2" Grid.Column="4" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R2C5" Grid.Row="2" Grid.Column="5" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R2C6" Grid.Row="2" Grid.Column="6" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R2C7" Grid.Row="2" Grid.Column="7" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R2C8" Grid.Row="2" Grid.Column="8" Style="{StaticResource btnWhite}"/>
 
-        <Rectangle Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="8" Grid.Column="2" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="8" Grid.Column="4" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="8" Grid.Column="5" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="8" Grid.Column="6" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
-        <Rectangle Grid.Row="8" Grid.Column="7" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="White"/>
-        <Rectangle Grid.Row="8" Grid.Column="8" HorizontalAlignment="Center" Height="80" Width="80" VerticalAlignment="Center" Fill="Black"/>
+        <Button x:Name="R1C1" Grid.Row="1" Grid.Column="1" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R1C2" Grid.Row="1" Grid.Column="2" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R1C3" Grid.Row="1" Grid.Column="3" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R1C4" Grid.Row="1" Grid.Column="4" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R1C5" Grid.Row="1" Grid.Column="5" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R1C6" Grid.Row="1" Grid.Column="6" Style="{StaticResource btnBlack}"/>
+        <Button x:Name="R1C7" Grid.Row="1" Grid.Column="7" Style="{StaticResource btnWhite}"/>
+        <Button x:Name="R1C8" Grid.Row="1" Grid.Column="8" Style="{StaticResource btnBlack}"/>
+
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="1"/>
-        <Button x:Name="btnAddPiece" Grid.Column="10" Content="Add&#xD;&#xA;" HorizontalAlignment="Left" Margin="84,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="164" Height="36"/>
-        <TextBox x:Name="tbCords" Grid.Column="10" HorizontalAlignment="Left" Height="36" Margin="84,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="164"/>
+        <Button x:Name="btnDelPiece" Grid.Column="10" Content="Remove&#xA;" HorizontalAlignment="Left" Margin="84,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="164" Height="36" Click="btnAddPiece_Click"/>
         <ComboBox x:Name="PiecesList" Grid.Column="10" HorizontalAlignment="Left" Margin="84,79,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2">
-            <ComboBoxItem Cursor="AppStarting" Content="Pawn"/>
-            <ComboBoxItem Cursor="AppStarting" Content="Bishop"/>
-            <ComboBoxItem Cursor="AppStarting" Content="Knight"/>
-            <ComboBoxItem Cursor="AppStarting" Content="Queen"/>
-            <ComboBoxItem Cursor="AppStarting" Content="King"/>
-            <ComboBoxItem Cursor="AppStarting" Content="Rook"/>
         </ComboBox>
     </Grid>
 </Window>

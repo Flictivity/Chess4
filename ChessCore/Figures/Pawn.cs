@@ -1,5 +1,5 @@
 ﻿//Saifullin Bulat 220 P Chess_4 task: 15.06.2022
-namespace Chess_4
+namespace Chess4WPF
 {
     class Pawn : Piece
     {
