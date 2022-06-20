@@ -5,8 +5,8 @@ namespace Chess4WPF
 {
     abstract public class Piece
     {
-        public int x { private set; get; }
-        public int y { private set; get; }
+        public int x { get; protected set;}
+        public int y { get; protected set;}
 
         private Dictionary<char, int> dict = new Dictionary<char, int>
         {
@@ -48,23 +48,25 @@ namespace Chess4WPF
             return false;
         }
 
-        public void Move(string cordsToMove)
+        public bool Move(string cordsToMove)
         {
             int x1 = dict[cordsToMove[0]];
             int y1 = int.Parse(cordsToMove[1].ToString());
 
-            Move(x1, y1);
+            return Move(x1, y1);
         }
 
-        public void Move(int x1, int y1)
+        public bool Move(int x1, int y1)
         {
             if (IsRightMove(x1, y1))
             {
                 this.x = x1;
                 this.y = y1;
+                return true;
             }
             else
             {
+                return false;
                 throw new Exception("Can not move this coordinates!");
             }
         }

@@ -9,23 +9,20 @@ namespace Chess4WPF
         public static void Main()
         {
             string chess = Console.ReadLine();
-            int x = int.Parse(Console.ReadLine());
-            int y = int.Parse(Console.ReadLine());
-            int x1 = int.Parse(Console.ReadLine());
-            int y1 = int.Parse(Console.ReadLine());
+            string startCords = Console.ReadLine();
+            string moveCords = Console.ReadLine();
 
             try
             {
                 var piece = PieceFabric.Make(new PieceData
                 {
                     Name = chess,
-                    Data = new Dictionary<string, int>
+                    Data = new Dictionary<string, string>
                                                 {
-                                                    { "X",x },
-                                                    { "Y", y}
+                                                    { "Cords", startCords }
                                                 }
                 });
-                piece.Move(x1,y1);
+                piece.Move(moveCords);
                 piece.Print();
             }
             catch (Exception e)

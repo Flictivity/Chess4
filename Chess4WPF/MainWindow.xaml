@@ -47,8 +47,7 @@
             <RowDefinition Height="*" x:Name="Row6"/>
             <RowDefinition Height="*" x:Name="Row7"/>
             <RowDefinition Height="*" x:Name="Row8"/>
-            <RowDefinition Height="*" x:Name="Row9"/>
-            <RowDefinition Height ="80" x:Name="Row10"/>
+            <RowDefinition Height="80" x:Name="Row9"/>
         </Grid.RowDefinitions>
 
         <Button x:Name="R8C1" Grid.Row="8" Grid.Column="1" Style="{StaticResource btnBlack}"/>
@@ -124,8 +123,9 @@
         <Button x:Name="R1C8" Grid.Row="1" Grid.Column="8" Style="{StaticResource btnBlack}"/>
 
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="8" Grid.Row="1"/>
-        <Button x:Name="btnDelPiece" Grid.Column="10" Content="Remove&#xA;" HorizontalAlignment="Left" Margin="84,0,0,0" Grid.Row="3" VerticalAlignment="Top" Width="164" Height="36" Click="btnAddPiece_Click"/>
-        <ComboBox x:Name="PiecesList" Grid.Column="10" HorizontalAlignment="Left" Margin="84,79,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2">
+        <Button x:Name="btnAddPiece" Grid.Column="10" Content="Add&#xA;" HorizontalAlignment="Left" Margin="84,77,0,0" Grid.Row="3" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2" Click="btnAddPiece_Click"/>
+        <ComboBox x:Name="PiecesList" Grid.Column="10" HorizontalAlignment="Left" Margin="84,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2">
         </ComboBox>
+        <TextBox x:Name="tbCords" Grid.Column="10" HorizontalAlignment="Left" Margin="84,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="36"/>
     </Grid>
 </Window>
