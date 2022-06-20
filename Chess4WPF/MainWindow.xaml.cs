@@ -60,7 +60,16 @@ namespace Chess4WPF
         }
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            
+            var sendButton = (Button)sender;
+            int x = Grid.GetColumn(sendButton);
+            int y = Grid.GetRow(sendButton);
+
+            var currentButton = GetButton(piece.x, piece.y);
+            if (piece.Move(x, y))
+            {
+                sendButton.Content = currentButton.Content;
+                currentButton.Content = null;
+            }
         }
         private Image GetPieceImg(string mame)
         {
@@ -104,11 +113,11 @@ namespace Chess4WPF
 
         private Button GetButton(int x, int y)
         {
-            foreach (Button child in Board.Children)
+            foreach (Button btn in Board.Children)
             {
-                if (Grid.GetRow(child) == y && Grid.GetColumn(child) == x)
+                if (Grid.GetRow(btn) == y && Grid.GetColumn(btn) == x)
                 {
-                    return child;
+                    return btn;
                 }
             }
             return null;
