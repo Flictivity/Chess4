@@ -20,37 +20,44 @@ namespace Chess4WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<string> pieces;
+        private List<string> piecesNames;
         private Piece piece;
+        private List<Piece> pieces;
+        private Piece selectedPiece = null;
 
         public MainWindow()
         {
             InitializeComponent();
-            pieces = new List<string> {"Pawn", "Rook", "Bishop", "Knight", "Rook", "Queen"};
-            PiecesList.ItemsSource = pieces;
+            piecesNames = new List<string> {"Pawn", "Rook", "Bishop", "Knight", "Rook", "Queen"};
+            PiecesList.ItemsSource = piecesNames;
+            pieces = new List<Piece>();
         }
 
         private void btnAddPiece_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                piece = PieceFabric.Make(new PieceData
+                if(tbCords.Text != "" && PiecesList.SelectedItem != null)
                 {
-                    Name = PiecesList.Text,
-                    Data = new Dictionary<string, string>
+                    piece = PieceFabric.Make(new PieceData
+                    {
+                        Name = PiecesList.Text,
+                        Data = new Dictionary<string, string>
                                     {
                                         { "Cords", tbCords.Text}
                                     }
-                });
+                    });
 
-                var btn = GetButton(piece.x, piece.y);
-                if (btn.Content == null)
-                {
-                    btn.Content = GetPieceImg(PiecesList.Text);
-                }
-                else
-                {
-                    MessageBox.Show("This corrdinates not empty");
+                    var btn = GetButton(piece.x, piece.y);
+                    if (btn.Content == null)
+                    {
+                        btn.Content = GetPieceImg(PiecesList.Text);
+                        pieces.Add(piece);
+                    }
+                    else
+                    {
+                        MessageBox.Show("This corrdinates not empty");
+                    }
                 }
             }
             catch
@@ -60,25 +67,34 @@ namespace Chess4WPF
         }
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            var sendButton = (Button)sender;
-            int x = Grid.GetColumn(sendButton);
-            int y = Grid.GetRow(sendButton);
-
-            var currentButton = GetButton(piece.x, piece.y);
-            if (piece.Move(x, y))
+            try
             {
-                sendButton.Content = currentButton.Content;
-                currentButton.Content = null;
+                var clickedBtn = (Button)sender;
+                if (clickedBtn.Content != null)
+                {
+                    selectedPiece = GetPiece(Grid.GetColumn(clickedBtn), Grid.GetRow(clickedBtn));
+                }
+                if (clickedBtn.Content == null && selectedPiece != null)
+                {
+                    var oldBtn = GetButton(selectedPiece.x, selectedPiece.y);
+                    if (selectedPiece.Move(Grid.GetColumn(clickedBtn), Grid.GetRow(clickedBtn)))
+                    {
+                        oldBtn.Content = null;
+                        clickedBtn.Content = GetPieceImg(selectedPiece.ToString().Split('.')[1]);
+                        selectedPiece = null;
+                    }
+                }
             }
+            catch{ }
         }
-        private Image GetPieceImg(string mame)
+        private Image GetPieceImg(string name)
         {
             Image myImage3 = new Image();
             try
             {
                 BitmapImage bi3 = new BitmapImage();
                 bi3.BeginInit();
-                switch (PiecesList.Text)
+                switch (name)
                 {
                     case "Pawn":
                         bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wP.png");
@@ -121,6 +137,46 @@ namespace Chess4WPF
                 }
             }
             return null;
+        }
+
+        private void btnRemovePiece_Click(object sender, RoutedEventArgs e)
+        {
+             Dictionary<char, int> dict = new Dictionary<char, int>
+            {
+                {'A',1},
+                {'B',2},
+                {'C',3},
+                {'D',4},
+                {'E',5},
+                {'F',6},
+                {'G',7},
+                {'H',8}
+            };
+
+            string delCords = tbCords.Text;
+            int x = dict[delCords[0]];
+            int y = Convert.ToInt32(Convert.ToString(delCords[1]));
+
+            var delPiece = GetPiece(x,y);
+            var delPieceBtn = GetButton(x, y);
+
+            if (delPieceBtn.Content != null)
+            {
+                delPieceBtn.Content = null;
+                pieces.Remove(delPiece);
+            }
+        }
+        private Piece GetPiece(int x, int y)
+        {
+            Piece searchPiece = null;
+            for(int i = 0; i < pieces.Count; i++)
+            {
+                if(pieces[i].x == x && pieces[i].y == y)
+                {
+                    searchPiece = pieces[i];
+                }
+            }
+            return searchPiece;
         }
     }
 }

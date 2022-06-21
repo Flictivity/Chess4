@@ -5,8 +5,8 @@ namespace Chess4WPF
 {
     abstract public class Piece
     {
-        public int x { get; protected set;}
-        public int y { get; protected set;}
+        public int x { get; private set;}
+        public int y { get; private set; }
 
         private Dictionary<char, int> dict = new Dictionary<char, int>
         {

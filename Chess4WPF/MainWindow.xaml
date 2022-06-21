@@ -148,31 +148,32 @@
         <Label Content="7" Grid.Row="7" Style="{StaticResource lbCord}"/>
         <Label Content="8" Grid.Row="8" Style="{StaticResource lbCord}"/>
 
-        <Label Content="1" Grid.Row="8" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="2" Grid.Row="7" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="3" Grid.Row="6" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="4" Grid.Row="5" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="5" Grid.Row="4" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="6" Grid.Row="3" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="7" Grid.Row="2" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="8" Grid.Row="1" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="8" Grid.Row="8" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="7" Grid.Row="7" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="6" Grid.Row="6" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="5" Grid.Row="5" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="4" Grid.Row="4" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="3" Grid.Row="3" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="2" Grid.Row="2" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="1" Grid.Row="1" Grid.Column="9" Style="{StaticResource lbCordH}"/>
 
-        <Label Content="A" Grid.Row="9" Grid.Column="8" Style="{StaticResource lbCord}"/>
-        <Label Content="B" Grid.Row="9" Grid.Column="7" Style="{StaticResource lbCord}"/>
-        <Label Content="C" Grid.Row="9" Grid.Column="6" Style="{StaticResource lbCord}"/>
-        <Label Content="D" Grid.Row="9" Grid.Column="5" Style="{StaticResource lbCord}"/>
-        <Label Content="E" Grid.Row="9" Grid.Column="4" Style="{StaticResource lbCord}"/>
-        <Label Content="F" Grid.Row="9" Grid.Column="3" Style="{StaticResource lbCord}"/>
-        <Label Content="G" Grid.Row="9" Grid.Column="2" Style="{StaticResource lbCord}"/>
-        <Label Content="H" Grid.Row="9" Grid.Column="1" Style="{StaticResource lbCord}"/>
+        <Label Content="H" Grid.Row="9" Grid.Column="8" Style="{StaticResource lbCord}"/>
+        <Label Content="G" Grid.Row="9" Grid.Column="7" Style="{StaticResource lbCord}"/>
+        <Label Content="F" Grid.Row="9" Grid.Column="6" Style="{StaticResource lbCord}"/>
+        <Label Content="E" Grid.Row="9" Grid.Column="5" Style="{StaticResource lbCord}"/>
+        <Label Content="D" Grid.Row="9" Grid.Column="4" Style="{StaticResource lbCord}"/>
+        <Label Content="C" Grid.Row="9" Grid.Column="3" Style="{StaticResource lbCord}"/>
+        <Label Content="B" Grid.Row="9" Grid.Column="2" Style="{StaticResource lbCord}"/>
+        <Label Content="A" Grid.Row="9" Grid.Column="1" Style="{StaticResource lbCord}"/>
 
-        <Label Content="A" Grid.Column="8" Style="{StaticResource lbCordH}"/>
-        <Label Content="B" Grid.Column="7" Style="{StaticResource lbCordH}"/>
-        <Label Content="C" Grid.Column="6" Style="{StaticResource lbCordH}"/>
-        <Label Content="D" Grid.Column="5" Style="{StaticResource lbCordH}"/>
-        <Label Content="E" Grid.Column="4" Style="{StaticResource lbCordH}"/>
-        <Label Content="F" Grid.Column="3" Style="{StaticResource lbCordH}"/>
-        <Label Content="G" Grid.Column="2" Style="{StaticResource lbCordH}"/>
-        <Label Content="H" Grid.Column="1" Style="{StaticResource lbCordH}"/>
+        <Label Content="H" Grid.Column="8" Style="{StaticResource lbCordH}"/>
+        <Label Content="G" Grid.Column="7" Style="{StaticResource lbCordH}"/>
+        <Label Content="F" Grid.Column="6" Style="{StaticResource lbCordH}"/>
+        <Label Content="E" Grid.Column="5" Style="{StaticResource lbCordH}"/>
+        <Label Content="D" Grid.Column="4" Style="{StaticResource lbCordH}"/>
+        <Label Content="C" Grid.Column="3" Style="{StaticResource lbCordH}"/>
+        <Label Content="B" Grid.Column="2" Style="{StaticResource lbCordH}"/>
+        <Label Content="A" Grid.Column="1" Style="{StaticResource lbCordH}"/>
+        <Button x:Name="btnAddPiece_Copy" Grid.Column="10" Content="Delete&#xA;" HorizontalAlignment="Left" Margin="84,76,0,0" Grid.Row="4" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2" Click="btnRemovePiece_Click"/>
     </Grid>
 </Window>
