@@ -8,7 +8,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="PieceIcons\wB.png" />
+    <None Remove="PieceIcons\wK.png" />
+    <None Remove="PieceIcons\wN.png" />
+    <None Remove="PieceIcons\wP.png" />
+    <None Remove="PieceIcons\wQ.png" />
+    <None Remove="PieceIcons\wR.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ChessCore\ChessCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="PieceIcons\wB.png" />
+    <Resource Include="PieceIcons\wK.png" />
+    <Resource Include="PieceIcons\wN.png" />
+    <Resource Include="PieceIcons\wP.png" />
+    <Resource Include="PieceIcons\wQ.png" />
+    <Resource Include="PieceIcons\wR.png" />
   </ItemGroup>
 
 </Project>

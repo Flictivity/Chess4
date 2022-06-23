@@ -51,13 +51,13 @@ namespace Chess4WPF
                     }
                     else
                     {
-                        throw new Exception();
+                        MessageBox.Show("This corrdinates not empty!");
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Wrong input params!", "This corrdinates not empty!");
+                MessageBox.Show("Wrong input params!");
             }
         }
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -70,6 +70,7 @@ namespace Chess4WPF
 
                 if (clickedBtn.Content != null)
                 {
+                    ResetFields();
                     selectedPiece = GetPiece(x,GetRightCords(y));
                     GetMoveFields();
                 }
@@ -94,6 +95,8 @@ namespace Chess4WPF
         private Image GetPieceImg(string name)
         {
             Image myImage3 = new Image();
+            System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PieceIcons\wP.png");
+
             try
             {
                 BitmapImage bi3 = new BitmapImage();
@@ -101,22 +104,22 @@ namespace Chess4WPF
                 switch (name)
                 {
                     case "Pawn":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wP.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wP.png");
                         break;
                     case "Knight":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wN.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wN.png");
                         break;
                     case "King":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wK.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wK.png");
                         break;
                     case "Bishop":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wB.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wB.png");
                         break;
                     case "Queen":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wQ.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wQ.png");
                         break;
                     case "Rook":
-                        bi3.UriSource = new Uri(@"C:\Users\User\source\repos\Chess4\Chess4WPF\PieceIcons\wR.png");
+                        bi3.UriSource = new Uri("pack://application:,,,/PieceIcons/wR.png");
                         break;
                 }
                 bi3.EndInit();
@@ -200,14 +203,11 @@ namespace Chess4WPF
         {
             try
             {
-                if (selectedPiece == null)
+                foreach (Button btn in Board.Children)
                 {
-                    foreach (Button btn in Board.Children)
-                    {
-                        int x = Grid.GetColumn(btn);
-                        int y = GetRightCords(Grid.GetRow(btn));
-                        btn.Background = (x + y) % 2 == 0 ? Brushes.Black : Brushes.White;
-                    }
+                    int x = Grid.GetColumn(btn);
+                    int y = GetRightCords(Grid.GetRow(btn));
+                    btn.Background = (x + y) % 2 == 0 ? Brushes.Black : Brushes.White;
                 }
             }
             catch
