@@ -48,6 +48,10 @@ namespace Chess4WPF
             return false;
         }
 
+        public bool TestMove(int x1, int y1)
+        {
+            return IsRightMove(x1, y1);
+        }
         public bool Move(string cordsToMove)
         {
             int x1 = dict[cordsToMove[0]];

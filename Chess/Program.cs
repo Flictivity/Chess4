@@ -9,21 +9,17 @@ namespace Chess4WPF
         public static void Main()
         {
             string chess = Console.ReadLine();
+            //int x = Console.ReadLine();
+            //int y = Console.ReadLine();
+            //int x1 = Console.ReadLine();
+            //int x2 = Console.ReadLine();
             string startCords = Console.ReadLine();
             string moveCords = Console.ReadLine();
 
             try
             {
-                var piece = PieceFabric.Make(new PieceData
-                {
-                    Name = chess,
-                    Data = new Dictionary<string, string>
-                                                {
-                                                    { "Cords", startCords }
-                                                }
-                });
-                piece.Move(moveCords);
-                piece.Print();
+                var piece = PieceFabric.Make(chess, startCords);
+                Console.WriteLine(piece.Move(moveCords) ? "YES" : "NO");
             }
             catch (Exception e)
             {
