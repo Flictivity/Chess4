@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess4WPF"
         mc:Ignorable="d"
-        Title="Chess Game" Height="795" Width="1200" Background="#FFFFDDAA" FontStyle="Normal" FontWeight="Normal">
+        Title="Chess Game" Height="795" Width="1200" Background="#FFFFDDAA" FontStyle="Normal" FontWeight="Normal" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="btn">
             <Setter Property="Control.Width" Value="80"/>
             <Setter Property="Control.Height" Value="80"/>
             <Setter Property="Control.HorizontalAlignment" Value = "Center"/>
             <Setter Property="Control.VerticalAlignment" Value = "Center"/>
-            <EventSetter Event="Button.Click" Handler="Btn_Click" />
+            <EventSetter Event="Button.Click" Handler="Btn_Click"/>
         </Style>
         <Style x:Key="btnBlack" BasedOn="{StaticResource btn}">
             <Setter Property="Control.Background" Value="Black" />
@@ -139,23 +139,23 @@
         <ComboBox x:Name="PiecesList" Grid.Column="10" HorizontalAlignment="Left" Margin="84,77,0,0" Grid.Row="1" VerticalAlignment="Top" Width="164" Height="36" Grid.RowSpan="2">
         </ComboBox>
         <TextBox x:Name="tbCords" Grid.Column="10" HorizontalAlignment="Left" Margin="84,0,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" Height="36"/>
-        <Label Content="1" Grid.Row="1" Style="{StaticResource lbCord}"/>
-        <Label Content="2" Grid.Row="2" Style="{StaticResource lbCord}"/>
-        <Label Content="3" Grid.Row="3" Style="{StaticResource lbCord}"/>
-        <Label Content="4" Grid.Row="4" Style="{StaticResource lbCord}"/>
-        <Label Content="5" Grid.Row="5" Style="{StaticResource lbCord}"/>
-        <Label Content="6" Grid.Row="6" Style="{StaticResource lbCord}"/>
-        <Label Content="7" Grid.Row="7" Style="{StaticResource lbCord}"/>
-        <Label Content="8" Grid.Row="8" Style="{StaticResource lbCord}"/>
+        <Label Content="8" Grid.Row="1" Style="{StaticResource lbCord}"/>
+        <Label Content="7" Grid.Row="2" Style="{StaticResource lbCord}"/>
+        <Label Content="6" Grid.Row="3" Style="{StaticResource lbCord}"/>
+        <Label Content="5" Grid.Row="4" Style="{StaticResource lbCord}"/>
+        <Label Content="4" Grid.Row="5" Style="{StaticResource lbCord}"/>
+        <Label Content="3" Grid.Row="6" Style="{StaticResource lbCord}"/>
+        <Label Content="2" Grid.Row="7" Style="{StaticResource lbCord}"/>
+        <Label Content="1" Grid.Row="8" Style="{StaticResource lbCord}"/>
 
-        <Label Content="8" Grid.Row="8" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="7" Grid.Row="7" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="6" Grid.Row="6" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="5" Grid.Row="5" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="4" Grid.Row="4" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="3" Grid.Row="3" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="2" Grid.Row="2" Grid.Column="9" Style="{StaticResource lbCordH}"/>
-        <Label Content="1" Grid.Row="1" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="1" Grid.Row="8" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="2" Grid.Row="7" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="3" Grid.Row="6" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="4" Grid.Row="5" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="5" Grid.Row="4" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="6" Grid.Row="3" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="7" Grid.Row="2" Grid.Column="9" Style="{StaticResource lbCordH}"/>
+        <Label Content="8" Grid.Row="1" Grid.Column="9" Style="{StaticResource lbCordH}"/>
 
         <Label Content="H" Grid.Row="9" Grid.Column="8" Style="{StaticResource lbCord}"/>
         <Label Content="G" Grid.Row="9" Grid.Column="7" Style="{StaticResource lbCord}"/>

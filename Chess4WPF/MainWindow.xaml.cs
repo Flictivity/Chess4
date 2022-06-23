@@ -21,14 +21,16 @@ namespace Chess4WPF
     public partial class MainWindow : Window
     {
         private List<string> piecesNames;
-        private Piece piece;
         private List<Piece> pieces;
-        private Piece selectedPiece = null;
+        private Piece selectedPiece;
 
         public MainWindow()
         {
             InitializeComponent();
-            piecesNames = new List<string> {"Pawn", "Rook", "Bishop", "Knight", "Rook", "Queen"};
+
+            piecesNames = new List<string> 
+            {"Pawn", "Rook", "Bishop", "Knight", "Rook", "Queen"};
+            
             PiecesList.ItemsSource = piecesNames;
             pieces = new List<Piece>();
         }
@@ -39,16 +41,9 @@ namespace Chess4WPF
             {
                 if(tbCords.Text != "" && PiecesList.SelectedItem != null)
                 {
-                    piece = PieceFabric.Make(new PieceData
-                    {
-                        Name = PiecesList.Text,
-                        Data = new Dictionary<string, string>
-                                    {
-                                        { "Cords", tbCords.Text}
-                                    }
-                    });
+                    var piece = PieceFabric.Make(PiecesList.Text, tbCords.Text);
 
-                    var btn = GetButton(piece.x, piece.y);
+                    var btn = GetButton(piece.x, GetRightCords(piece.y));
                     if (btn.Content == null)
                     {
                         btn.Content = GetPieceImg(PiecesList.Text);
@@ -56,13 +51,13 @@ namespace Chess4WPF
                     }
                     else
                     {
-                        MessageBox.Show("This corrdinates not empty");
+                        throw new Exception();
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Select Piece type");
+                MessageBox.Show("Wrong input params!", "This corrdinates not empty!");
             }
         }
         private void Btn_Click(object sender, RoutedEventArgs e)
@@ -70,19 +65,28 @@ namespace Chess4WPF
             try
             {
                 var clickedBtn = (Button)sender;
+                int x = Grid.GetColumn(clickedBtn);
+                int y = Grid.GetRow(clickedBtn);
+
                 if (clickedBtn.Content != null)
                 {
-                    selectedPiece = GetPiece(Grid.GetColumn(clickedBtn), Grid.GetRow(clickedBtn));
+                    selectedPiece = GetPiece(x,GetRightCords(y));
+                    GetMoveFields();
                 }
                 if (clickedBtn.Content == null && selectedPiece != null)
                 {
-                    var oldBtn = GetButton(selectedPiece.x, selectedPiece.y);
-                    if (selectedPiece.Move(Grid.GetColumn(clickedBtn), Grid.GetRow(clickedBtn)))
+                    var oldBtn = GetButton(selectedPiece.x,
+                        GetRightCords(selectedPiece.y));
+
+                    if (selectedPiece.Move(x, GetRightCords(y)))
                     {
                         oldBtn.Content = null;
-                        clickedBtn.Content = GetPieceImg(selectedPiece.ToString().Split('.')[1]);
+                        clickedBtn.Content = GetPieceImg(selectedPiece.ToString().
+                            Split('.')[1]);
                         selectedPiece = null;
+                                            ResetFields();
                     }
+                    return;
                 }
             }
             catch{ }
@@ -141,29 +145,23 @@ namespace Chess4WPF
 
         private void btnRemovePiece_Click(object sender, RoutedEventArgs e)
         {
-             Dictionary<char, int> dict = new Dictionary<char, int>
+            try
             {
-                {'A',1},
-                {'B',2},
-                {'C',3},
-                {'D',4},
-                {'E',5},
-                {'F',6},
-                {'G',7},
-                {'H',8}
-            };
+                var delPiece = selectedPiece;
+                var delPieceBtn = GetButton(selectedPiece.x,
+                                GetRightCords(selectedPiece.y));
 
-            string delCords = tbCords.Text;
-            int x = dict[delCords[0]];
-            int y = Convert.ToInt32(Convert.ToString(delCords[1]));
-
-            var delPiece = GetPiece(x,y);
-            var delPieceBtn = GetButton(x, y);
-
-            if (delPieceBtn.Content != null)
+                if (delPieceBtn.Content != null)
+                {
+                    delPieceBtn.Content = null;
+                    selectedPiece = null;
+                    pieces.Remove(delPiece);
+                    ResetFields();
+                }
+            }
+            catch
             {
-                delPieceBtn.Content = null;
-                pieces.Remove(delPiece);
+                MessageBox.Show("Select piece!");
             }
         }
         private Piece GetPiece(int x, int y)
@@ -177,6 +175,43 @@ namespace Chess4WPF
                 }
             }
             return searchPiece;
+        }
+        private int GetRightCords(int row)
+        {
+            return Math.Abs(row - 9);
+        }
+
+        private void GetMoveFields()
+        {
+            if(selectedPiece != null)
+            {
+                foreach (Button btn in Board.Children)
+                {
+                    int x = Grid.GetColumn(btn);
+                    int y = GetRightCords(Grid.GetRow(btn));
+                    if (btn.Content == null && selectedPiece.TestMove(x, y))
+                    {
+                        btn.Background = Brushes.Green;
+                    }
+                }
+            }
+        }
+        private void ResetFields()
+        {
+            try
+            {
+                if (selectedPiece == null)
+                {
+                    foreach (Button btn in Board.Children)
+                    {
+                        int x = Grid.GetColumn(btn);
+                        int y = GetRightCords(Grid.GetRow(btn));
+                        btn.Background = (x + y) % 2 == 0 ? Brushes.Black : Brushes.White;
+                    }
+                }
+            }
+            catch
+            { }
         }
     }
 }
