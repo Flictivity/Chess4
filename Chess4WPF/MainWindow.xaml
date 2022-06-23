@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess4WPF"
         mc:Ignorable="d"
-        Title="Chess Game" Height="795" Width="1200" Background="#FFFFDDAA" FontStyle="Normal" FontWeight="Normal" ResizeMode="NoResize">
+        Title="Chess Game" Height="795" Width="1200" Background="#FFDEA653" FontStyle="Normal" FontWeight="Normal" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="btn">
             <Setter Property="Control.Width" Value="80"/>
