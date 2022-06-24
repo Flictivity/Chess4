@@ -29,7 +29,7 @@ namespace Chess4WPF
             InitializeComponent();
 
             piecesNames = new List<string> 
-            {"Pawn", "Rook", "Bishop", "Knight", "Rook", "Queen"};
+            {"Pawn", "Rook", "Bishop", "Knight", "King", "Queen"};
             
             PiecesList.ItemsSource = piecesNames;
             pieces = new List<Piece>();
@@ -95,7 +95,6 @@ namespace Chess4WPF
         private Image GetPieceImg(string name)
         {
             Image myImage3 = new Image();
-            System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"PieceIcons\wP.png");
 
             try
             {
